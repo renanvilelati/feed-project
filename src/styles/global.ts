@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -15,21 +15,32 @@ export const GlobalStyle = createGlobalStyle`
   --green-500: #00875f;
 }
 
-  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-  body {
+body {
   background: var(--gray-900);
   color: var(--gray-300);
   -webkit-font-smoothing: antialiased;
 }
 
-  body, input, textarea, button {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-  }
+body, input, textarea, button {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+`;
+
+export const ContentWrapper = styled.div`
+  max-width: 70rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
+  display: grid;
+  grid-template-columns: 256px 1fr;
+  gap: 2rem;
+  align-items: flex-start;
 `;

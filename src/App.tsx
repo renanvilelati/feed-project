@@ -1,13 +1,20 @@
+import { Aside } from './components/Aside';
 import { Header } from './components/Header';
-import { GlobalStyle } from './styles/global';
+import { Post } from './components/Post';
+import { ContentWrapper, GlobalStyle } from './styles/global';
 
 export const App = () => {
   return (
     <>
       <Header />
-      <main>
-        <GlobalStyle />
-      </main>
+
+      <ContentWrapper>
+        <Aside />
+        <main>
+          <Post />
+        </main>
+      </ContentWrapper>
+      <GlobalStyle />
     </>
   );
 };
