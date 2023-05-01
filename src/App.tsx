@@ -1,8 +1,14 @@
+import { Header } from './components/Header';
+import { GlobalStyle } from './styles/global';
+
 export const App = () => {
   return (
-    <main>
-      <h1>APP</h1>
-    </main>
+    <>
+      <Header />
+      <main>
+        <GlobalStyle />
+      </main>
+    </>
   );
 };
 
