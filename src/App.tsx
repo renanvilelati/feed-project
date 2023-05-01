@@ -12,6 +12,7 @@ export const App = () => {
         <Aside />
         <main>
           <Post />
+          <Post />
         </main>
       </ContentWrapper>
       <GlobalStyle />
