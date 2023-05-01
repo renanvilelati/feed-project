@@ -1,4 +1,5 @@
-import { PostContainer } from './styles';
+import { Comment } from '../Comment';
+import { Form, PostContainer } from './styles';
 
 export const Post = () => {
   return (
@@ -36,6 +37,22 @@ export const Post = () => {
           <a href='#'>#projeto</a> <a href='#'>#novoprojeto</a>{' '}
           <a href='#'>#reactjs</a>
         </p>
+      </div>
+
+      <Form>
+        <strong>Deixe seu feedback</strong>
+
+        <textarea placeholder='Deixe um comentário' />
+
+        <footer>
+          <button type='submit'>Publicar</button>
+        </footer>
+      </Form>
+
+      <div className='commentList'>
+        <Comment />
+        <Comment />
+        <Comment />
       </div>
     </PostContainer>
   );
