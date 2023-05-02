@@ -121,7 +121,12 @@ export const Form = styled.form`
     transition: background-color 0.1s;
   }
 
-  button[type='submit']:hover {
+  button[type='submit']:not(:disabled):hover {
     background: var(--green-300);
+  }
+
+  button[type='submit']:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
   }
 `;

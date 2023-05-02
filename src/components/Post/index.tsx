@@ -51,9 +51,15 @@ export const Post = ({ post }: PostProps) => {
     setNewComment('');
   };
 
-  const deleteComment = () => {
-    console.log('Deletar comentário');
+  const deleteComment = (commentToDelete: string) => {
+    const commentsWithoutDeletedOne = comments.filter(
+      (comment) => comment !== commentToDelete
+    );
+
+    setComments(commentsWithoutDeletedOne);
   };
+
+  const isNewCommentEmpty = newComment.length === 0;
 
   return (
     <PostContainer>
@@ -100,10 +106,13 @@ export const Post = ({ post }: PostProps) => {
           value={newComment}
           placeholder='Deixe um comentário'
           onChange={(e) => setNewComment(e.target.value)}
+          required
         />
 
         <footer>
-          <button type='submit'>Publicar</button>
+          <button type='submit' disabled={isNewCommentEmpty}>
+            Publicar
+          </button>
         </footer>
       </Form>
 
