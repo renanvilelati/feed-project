@@ -40,6 +40,13 @@ body, input, textarea, button {
   font-weight: 400;
   font-size: 1rem;
 }
+
+@media (max-width: 768px) {
+    html {
+      font-size: 75%; // (14 x 100) / 16 = 14px
+    }
+
+  }
 `;
 
 export const ContentWrapper = styled.div`
@@ -51,4 +58,8 @@ export const ContentWrapper = styled.div`
   grid-template-columns: 256px 1fr;
   gap: 2rem;
   align-items: flex-start;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
