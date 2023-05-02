@@ -51,8 +51,6 @@ export const Post = () => {
 
       <div className='commentList'>
         <Comment />
-        <Comment />
-        <Comment />
       </div>
     </PostContainer>
   );
