@@ -4,13 +4,13 @@ import { CommentContainer } from './styles';
 export const Comment = () => {
   return (
     <CommentContainer>
-      <img src='https://github.com/renanvilelati.png' alt='' />
+      <img src='https://github.com/maykbrito.png' alt='' />
 
       <div className='commentBox'>
         <div className='commentContent'>
           <header>
             <div className='authorAndTime'>
-              <strong>Renan Vilela</strong>
+              <strong>Mayk Brito</strong>
               <time title='11 de Maio às 08:13h' dateTime='2022-05-11 08:13:00'>
                 Há cerca de 1h
               </time>

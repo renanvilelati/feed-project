@@ -1,18 +1,21 @@
 import { Comment } from '../Comment';
 import { Form, PostContainer } from './styles';
 
-export const Post = () => {
+interface PostProps {
+  avatar: string;
+  name: string;
+  content: string;
+}
+
+export const Post = ({ avatar, name, content }: PostProps) => {
   return (
     <PostContainer>
       <header>
         <div className='author'>
-          <img
-            className='avatar'
-            src='https://github.com/renanvilelati.png'
-            alt='User picture'
-          />
+          <img className='avatar' src={avatar} alt='User picture' />
+
           <div className='authorInfo'>
-            <strong>Renan Vilela</strong>
+            <strong>{name}</strong>
             <span>Web Developer</span>
           </div>
         </div>
@@ -24,15 +27,7 @@ export const Post = () => {
 
       <div className='content'>
         <p>Fala galeraa 👋</p>
-        <p>
-          Estou fazendo um projeto de feed com react que está ficando muito
-          legal 🚀
-        </p>
-        <p>
-          <a href='https://github.com/renanvilelati/feed-project'>
-            Feed Project
-          </a>
-        </p>
+        <p>{content}</p>
         <p>
           <a href='#'>#projeto</a> <a href='#'>#novoprojeto</a>{' '}
           <a href='#'>#reactjs</a>
