@@ -74,7 +74,7 @@ export const PostContainer = styled.article`
   }
 `;
 
-export const Form = styled.article`
+export const Form = styled.form`
   width: 100%;
   margin-top: 1.5rem;
   padding-top: 1.5rem;

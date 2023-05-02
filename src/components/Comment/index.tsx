@@ -1,7 +1,16 @@
 import { ThumbsUp, Trash } from 'phosphor-react';
 import { CommentContainer } from './styles';
 
-export const Comment = () => {
+interface CommentProps {
+  content: string;
+  OnDeleteComment: (comment: string) => void;
+}
+
+export const Comment = ({ content, OnDeleteComment }: CommentProps) => {
+  function handleDeleteComment() {
+    OnDeleteComment(content);
+  }
+
   return (
     <CommentContainer>
       <img src='https://github.com/maykbrito.png' alt='' />
@@ -16,12 +25,12 @@ export const Comment = () => {
               </time>
             </div>
 
-            <button title='Deletar comentário'>
+            <button onClick={handleDeleteComment} title='Deletar comentário'>
               <Trash size={24} />
             </button>
           </header>
 
-          <p>Muito bom, Renan, parabéns!! 👏👏</p>
+          <p>{content}</p>
         </div>
 
         <footer>

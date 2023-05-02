@@ -1,43 +1,106 @@
+import { format, formatDistanceToNow } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+
 import { Comment } from '../Comment';
 import { Form, PostContainer } from './styles';
+import { useState, FormEvent } from 'react';
 
-interface PostProps {
-  avatar: string;
+interface Author {
   name: string;
+  role: string;
+  avatarUrl: string;
+}
+
+interface Content {
+  type: 'paragraph' | 'link';
   content: string;
 }
 
-export const Post = ({ avatar, name, content }: PostProps) => {
+export interface PostType {
+  id: string;
+  author: Author;
+  publishedAt: Date;
+  content: Content[];
+}
+
+interface PostProps {
+  post: PostType;
+}
+
+export const Post = ({ post }: PostProps) => {
+  const [newComment, setNewComment] = useState('');
+  const [comments, setComments] = useState(['post muito bacana']);
+
+  const publishedDateFormatted = format(
+    post.publishedAt,
+    "d 'de' LLLL 'às' HH:mm'h'",
+    {
+      locale: ptBR,
+    }
+  );
+
+  const publishedDateRelativeToNow = formatDistanceToNow(post.publishedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  });
+
+  const handleCreateNewComment = (e: FormEvent) => {
+    e.preventDefault();
+
+    setComments([...comments, newComment]);
+    setNewComment('');
+  };
+
+  const deleteComment = () => {
+    console.log('Deletar comentário');
+  };
+
   return (
     <PostContainer>
       <header>
         <div className='author'>
-          <img className='avatar' src={avatar} alt='User picture' />
+          <img
+            className='avatar'
+            src={post.author.avatarUrl}
+            alt='User picture'
+          />
 
           <div className='authorInfo'>
-            <strong>{name}</strong>
-            <span>Web Developer</span>
+            <strong>{post.author.name}</strong>
+            <span>{post.author.role}</span>
           </div>
         </div>
 
-        <time title='11 de Maio às 08:13h' dateTime='2022-05-11 08:13:00'>
-          Publicado há 1h
+        <time
+          title={publishedDateFormatted}
+          dateTime={post.publishedAt.toISOString()}
+        >
+          {publishedDateRelativeToNow}
         </time>
       </header>
 
       <div className='content'>
-        <p>Fala galeraa 👋</p>
-        <p>{content}</p>
-        <p>
-          <a href='#'>#projeto</a> <a href='#'>#novoprojeto</a>{' '}
-          <a href='#'>#reactjs</a>
-        </p>
+        {post.content.map((item) => {
+          if (item.type === 'paragraph') {
+            return <p key={item.content}>{item.content}</p>;
+          } else if (item.type === 'link') {
+            return (
+              <p key={item.content}>
+                <a href='#'>{item.content}</a>
+              </p>
+            );
+          }
+        })}
       </div>
 
-      <Form>
+      <Form onSubmit={handleCreateNewComment}>
         <strong>Deixe seu feedback</strong>
 
-        <textarea placeholder='Deixe um comentário' />
+        <textarea
+          value={newComment}
+          placeholder='Deixe um comentário'
+          onChange={(e) => setNewComment(e.target.value)}
+        />
 
         <footer>
           <button type='submit'>Publicar</button>
@@ -45,7 +108,15 @@ export const Post = ({ avatar, name, content }: PostProps) => {
       </Form>
 
       <div className='commentList'>
-        <Comment />
+        {comments.map((comment) => {
+          return (
+            <Comment
+              key={comment}
+              content={comment}
+              OnDeleteComment={deleteComment}
+            />
+          );
+        })}
       </div>
     </PostContainer>
   );
