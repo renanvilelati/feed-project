@@ -83,7 +83,7 @@ export const CommentContainer = styled.div`
   }
 
   .commentBox footer button span::before {
-    content: '\2022';
+    content: '\\2022';
     padding: 0 0.25rem;
   }
 `;
