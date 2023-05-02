@@ -37,10 +37,10 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
 ```bash
 
     # Clonar o repositório
-    $ git clone https://github.com/renanvilelati/dt-money.git
+    $ git clone https://github.com/renanvilelati/feed-project
 
     # Entrar no diretório
-    $ cd dt-money
+    $ cd feed-project
 
     # Instalar as dependências
     $ npm install
