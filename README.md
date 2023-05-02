@@ -17,7 +17,7 @@ O projeto consiste em um feed de postagens, no qual os usuários poderão compar
 
 ## 👨‍🚀 Próximas atualizações
 
-Pretendo fazer um sistema de autenticação e também de upload de imagem para a foto de perfil dos usuários.
+Pretendo fazer um sistema de autenticação e também de upload de imagem para a foto de perfil dos usuários utilizando o firebase.
 
 ---
 
